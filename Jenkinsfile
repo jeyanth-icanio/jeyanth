@@ -1,10 +1,10 @@
 pipeline {
-    //agent {
-        //docker {
-            //image 'node:lts-buster-slim'
-            //args '-p 3000:3000'
-        //}
-    //}
+    agent {
+        docker {
+            image 'node:18.16.0'
+            args '-p 3000:3000'
+        }
+    }
     environment {
         CI = 'true'
     }

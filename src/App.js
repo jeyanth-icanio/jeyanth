@@ -10,7 +10,7 @@ function App() {
           REACT APP.
         </p>
         <h1>
-        DOCKER </h1>
+        Jeyanth </h1>
           
       </header>
     </div>

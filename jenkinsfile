@@ -1,44 +1,29 @@
 pipeline {
-    agent any
-    
-    stages {
-        stage('Checkout') {
-            steps {
-                // Checkout the repository
-                git 'https://github.com/jeyanth-icanio/jeyanth.git'
-            }
+    agent {
+        docker {
+            image 'node:lts-buster-slim'
+            args '-p 3000:3000'
         }
-        
-        stage('Install Dependencies') {
+    }
+    environment {
+        CI = 'true'
+    }
+    stages {
+        stage('Build') {
             steps {
-                // Install Node.js and npm
-                tools {
-                    nodejs 'nodejs'
-                }
-                
-                // Install project dependencies
                 sh 'npm install'
             }
         }
-        
-        stage('Build') {
+        stage('Test') {
             steps {
-                // Build the React project
-                sh 'npm run build'
+                sh './jenkins/scripts/test.sh'
             }
         }
-        
-        stage('Run Tests') {
+        stage('Deliver') {
             steps {
-                // Run tests
-                sh 'npm test'
-            }
-        }
-        
-        stage('Publish Artifacts') {
-            steps {
-                // Publish build artifacts (e.g., build files, test reports)
-                archiveArtifacts artifacts: 'build/**', fingerprint: true
+                sh './jenkins/scripts/deliver.sh'
+                input message: 'Finished using the web site? (Click "Proceed" to continue)'
+                sh './jenkins/scripts/kill.sh'
             }
         }
     }

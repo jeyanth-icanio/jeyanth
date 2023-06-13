@@ -2,14 +2,16 @@ pipeline {
     agent any
     stages {
         stage('Build') {
-            agent { docker 'node:18.16.0' }
+            agent { docker 'node:18.16.0'
+                  lable 'react'
+                }
             steps {
                 sh 'ls'
                 sh 'npm install'
             }
         }
         stage('run') {
-            agent { arg '-d -p 8000:8000' }
+            agent { args '-d -p 8000:8000' }
             steps {
             sh 'npm start'
             }

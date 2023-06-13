@@ -4,7 +4,7 @@ pipeline {
         docker {
             //mkdir /var/lib/jenkins
             image 'node:18.16.0'
-            args '-t -d -p 3000:3000 -w /var/lib/jenkins/workspace/demo2'
+            args '-t -d -p 3000:3000 -v /var/lib/jenkins/workspace/demo2:/var/lib/jenkins/workspace/demo2:rw,z'
         }
     }
     stages {

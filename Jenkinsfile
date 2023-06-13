@@ -4,7 +4,7 @@ pipeline {
             stage("Checkout") {
                steps {
                 // Checkout source code from a version control system (e.g., Git)
-                   git "https://github.com/jeyanth-icanio/jeyanth.git"
+                   git url: "https://github.com/jeyanth-icanio/jeyanth.git"
             }
         }  
             stage("build"){

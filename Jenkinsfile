@@ -3,12 +3,13 @@ pipeline {
     agent {
         docker {
             image 'node:18.16.0'
-            args '-p 3000:3000'
+            //args '-p 3000:3000'
         }
     }
     stages {
         stage('Build') {
             steps {
+                sh 'ls'
                 sh 'npm install'
             }
         }

@@ -2,7 +2,7 @@ pipeline {
     //agent any
     agent {
         docker {
-            mkdir /var/lib/jenkins
+            //mkdir /var/lib/jenkins
             image 'node:18.16.0'
             args '-p 3000:3000'
         }

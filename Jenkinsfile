@@ -1,6 +1,12 @@
 pipeline {
     agent any 
           stages{   
+            stage('Checkout') {
+               steps {
+                // Checkout source code from a version control system (e.g., Git)
+                   git 'https://github.com/jeyanth-icanio/jeyanth.git'
+            }
+        }  
             stage("build"){
                 steps{
                    sh "docker build . -t monkey_web:18.16.0"

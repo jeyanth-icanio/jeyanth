@@ -1,10 +1,10 @@
 pipeline {
     agent any 
           stages{   
-            stage('Checkout') {
+            stage("Checkout") {
                steps {
                 // Checkout source code from a version control system (e.g., Git)
-                   git 'https://github.com/jeyanth-icanio/jeyanth.git'
+                   git "https://github.com/jeyanth-icanio/jeyanth.git"
             }
         }  
             stage("build"){
@@ -24,5 +24,10 @@ pipeline {
                     
                 }
             }
+              stage("GitHub Jenkins Ant Docker Build") {
+                  steps {
+                     git "https://github.com/jeyanth-icanio/jeyanth.git"
+                     sh "ant clean compile test package war"
+      }
         }
 }

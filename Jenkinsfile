@@ -1,20 +1,15 @@
 pipeline {
-    //agent any
-    agent {
-        docker {
-            //mkdir /var/lib/jenkins
-            image 'node:18.16.0'
-            args '-t -d -p 3000:3000 -v /var/lib/jenkins/workspace/demo2:/var/lib/jenkins/workspace/demo2:rw,z'
-        }
-    }
+    agent any
     stages {
         stage('Build') {
+            agent {docker 'node:18.16.0'}
             steps {
                 sh 'ls'
                 sh 'npm install'
             }
         }
         stage('run') {
+            agent {arg '-d -p 8000:8000'}
             steps {
             sh 'npm start'
             }

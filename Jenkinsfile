@@ -5,23 +5,25 @@ pipeline {
                steps {
                    sh "ls"
                 // Checkout source code from a version control system (e.g., Git)
-                   git url: "https://github.com/jeyanth-icanio/jeyanth.git/"
+                   git url: "https://github.com/jeyanth-icanio/jeyanth.git"
                    sh "ls" 
             }
         }  
             stage("build"){
                 steps{
+                    echo "building....."
                    sh "docker build . -t monkey_web:18.16.0"
                 } 
             }
             stage("images"){
                  steps{
-                    echo "buildind...."
+                    echo "IMAGE SHOWN"
                     sh "docker images"
                 }
             }  
             stage("run"){
                 steps{
+                    echo "RUNNING" 
                     sh "docker run -d -p 3000:3000 monkey_web:18.16.0"
                     
                 }

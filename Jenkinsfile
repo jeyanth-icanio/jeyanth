@@ -14,7 +14,7 @@ pipeline {
             }  
             stage("run"){
                 steps{
-                    sh "docker run -d -p 3000:3000 monkey_web"
+                    sh "docker run -d -p 3000:3000 monkey_web:18.16.0"
                     
                 }
             }

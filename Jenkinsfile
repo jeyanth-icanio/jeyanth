@@ -3,8 +3,10 @@ pipeline {
           stages{   
             stage("Checkout") {
                steps {
+                   sh "ls"
                 // Checkout source code from a version control system (e.g., Git)
-                   git url: "https://github.com/jeyanth-icanio/jeyanth.git"
+                   git url: "https://github.com/jeyanth-icanio/jeyanth.git/"
+                   sh "ls" 
             }
         }  
             stage("build"){

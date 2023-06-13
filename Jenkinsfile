@@ -24,11 +24,5 @@ pipeline {
                     
                 }
             }
-              stage("GitHub Jenkins Ant Docker Build") {
-                  steps {
-                     git "https://github.com/jeyanth-icanio/jeyanth.git"
-                     sh "ant clean compile test package war"
-                  }
-              }
         }
 }

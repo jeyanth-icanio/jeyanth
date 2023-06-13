@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+   // agent any
     stages {
         stage('Build') {
             agent { docker 'node:18.16.0'
@@ -11,7 +11,7 @@ pipeline {
             }
         }
         stage('run') {
-            agent { args '-d -p 8000:8000' }
+            //agent { args '-p 8000:8000' }
             steps {
             sh 'npm start'
             }

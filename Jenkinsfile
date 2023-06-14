@@ -1,7 +1,7 @@
 pipeline {
     agent any 
           stages{   
-            stage("Checkout") {
+            stage('list') {
                steps {
                    sh "ls"
                 // Checkout source code from a version control system (e.g., Git)
@@ -9,13 +9,13 @@ pipeline {
                //    sh "ls" 
             }
         }  
-            stage("build"){
+            stage('build'){
                 steps{
                     echo "building....."
-                   sh "docker build . -t monkey_web:18.16.0"
+                   sh 'docker build . -t monkey_web:18.16.0'
                 } 
             }
-            stage("images"){
+            stage('images'){
                  steps{
                     echo "IMAGE SHOWN"
                     sh "docker images"
@@ -27,7 +27,7 @@ pipeline {
                     //sh 'docker stop monkey_web:18.16.0"
                     //sh 'docker rm monkey_web:18.16.0"
                    // sh "fuser -k 3000:3000"
-                    sh "docker run -d -p 3000:3000 monkey_web:18.16.0"
+                    sh 'docker run -d -p 3000:3000 monkey_web:18.16.0'
                     //sh "./Jenkins/script/kill.sh"
                     
                 }

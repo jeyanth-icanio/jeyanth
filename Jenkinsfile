@@ -22,6 +22,7 @@ pipeline {
                     echo "IMAGE SHOWN"
                     //sh "docker images"
                    //  sh 'npm run build'
+                     sh 'pm2 delete react'
                      sh 'pm2 start --name react npm -- start'
                      sh 'pm2 list'
                 }

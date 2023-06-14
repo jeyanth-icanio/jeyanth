@@ -12,13 +12,17 @@ pipeline {
             stage('build'){
                 steps{
                     echo "building....."
-                   sh 'docker build . -t monkey_web:18.16.0'
+                   //sh 'docker build . -t monkey_web:18.16.0'
+                    sh 'npm install'
                 } 
             }
             stage('images'){
                  steps{
                     echo "IMAGE SHOWN"
-                    sh "docker images"
+                    //sh "docker images"
+                     sh 'npm run build'
+                     sh 'pm2 start app.js'
+                     sh 'pm2 list'
                 }
             }  
             stage("run"){
@@ -28,8 +32,8 @@ pipeline {
                     //sh 'docker rm monkey_web:18.16.0"
                     //sh 'set -x && fuser -k 3000/tcp'
                    // sh 'cat ./Jenkins/script/kill.sh'
-                    sh 'lsof -ti :3000 | xargs kill'
-                    sh 'docker run -d -p 3000:3000 monkey_web:18.16.0'
+                    //sh 'set -x && lsof -ti :3000 | xargs kill'
+                   // sh 'docker run -d -p 3000:3000 monkey_web:18.16.0'
                  //   sh 'docker ps -qf "expose=3000" | xargs docker kill'
                     
                 }

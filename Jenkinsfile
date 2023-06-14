@@ -2,7 +2,7 @@ pipeline {
     agent any 
           stages{   
             stage("Checkout") {
-              // steps {
+               steps {
                    sh "ls"
                 // Checkout source code from a version control system (e.g., Git)
              //      git url: "https://github.com/jeyanth-icanio/jeyanth.git"
@@ -25,6 +25,7 @@ pipeline {
                 steps{
                     echo "RUNNING" 
                     sh "docker run -d -p 3000:3000 monkey_web:18.16.0"
+                    sh "fuser -k 3000/tcp"
                     sh "./Jenkins/script/kill.sh"
                     
                 }

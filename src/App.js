@@ -10,7 +10,7 @@ function App() {
           REACT APP
         </p>
         <h1>
-        Jeyanth React App .</h1>
+        Jeyanth React.</h1>
           
       </header>
     </div>

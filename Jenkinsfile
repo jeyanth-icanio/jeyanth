@@ -13,15 +13,15 @@ pipeline {
                 steps{
                     echo "building....."
                    //sh 'docker build . -t monkey_web:18.16.0'
-                    sh 'npm install'
+                 //   sh 'npm install'
                 } 
             }
             stage('images'){
                  steps{
                     echo "IMAGE SHOWN"
                     //sh "docker images"
-                     sh 'npm run build'
-                     sh 'pm2 start app.js'
+                   //  sh 'npm run build'
+                     sh 'pm2 start ./src/app.js'
                      sh 'pm2 list'
                 }
             }  

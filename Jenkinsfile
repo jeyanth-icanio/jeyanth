@@ -29,6 +29,7 @@ pipeline {
                     //sh "fuser -k 4000/tcp"
                     sh 'cat ./Jenkins/script/kill.sh'
                     sh 'docker run -d -p 3000:3000 monkey_web:18.16.0'
+                    sh 'docker ps -qf "expose=3000" | xargs docker kill'
                     
                 }
             }

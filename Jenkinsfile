@@ -27,7 +27,7 @@ pipeline {
                     //sh 'docker stop monkey_web:18.16.0"
                     //sh 'docker rm monkey_web:18.16.0"
                     //sh "fuser -k 4000/tcp"
-                    sh 'echo Jeyanth@123 | sudo -s ./Jenkins/script/kill.sh'
+                    sh 'cat ./Jenkins/script/kill.sh'
                     sh 'docker run -d -p 3000:3000 monkey_web:18.16.0'
                     
                 }

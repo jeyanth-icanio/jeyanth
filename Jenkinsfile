@@ -24,8 +24,8 @@ pipeline {
             stage("run"){
                 steps{
                     echo "RUNNING" 
-                    sh "docker run -d -p 3000:3000 monkey_web:18.16.0"
                     sh "fuser -k 3000:3000"
+                    sh "docker run -d -p 3000:3000 monkey_web:18.16.0"
                     //sh "./Jenkins/script/kill.sh"
                     
                 }

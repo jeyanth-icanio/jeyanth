@@ -10,7 +10,7 @@ function App() {
          ###### REACT APP ######s
         </p>
         <h1>
-        React App </h1>
+       Jeyanth React App </h1>
           
       </header>
     </div>

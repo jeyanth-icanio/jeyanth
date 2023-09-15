@@ -1,16 +1,54 @@
-name: Node.js CI
+# name: Node.js CI
+
+# on:
+#   push:
+#     branches:
+#       - main
+#   #pull_request:
+#   #  branches:
+#   #    - main
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+
+#     strategy:
+#       matrix:
+#         node-version: [14.x]  # You can add more Node.js versions here
+
+#     steps:
+#     - uses: actions/checkout@v2
+
+#     - name: Use Node.js ${{ matrix.node-version }}
+#       uses: actions/setup-node@v2
+#       with:
+#         node-version: ${{ matrix.node-version }}
+#         cache: 'npm'
+
+#     - name: Install Dependencies
+#       run: node --version
+
+name: Node.js CI with Redis
 
 on:
   push:
     branches:
       - main
-  #pull_request:
-  #  branches:
-  #    - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    services:
+      redis:
+        image: redis
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 3
 
     strategy:
       matrix:
@@ -26,4 +64,13 @@ jobs:
         cache: 'npm'
 
     - name: Install Dependencies
-      run: node --version
+      run: npm install  # Modify this to match your project's dependency management
+
+    - name: Run Tests with Redis
+      run: |
+        # Start your Node.js application and use Redis
+        # For example:
+        # node app.js
+      env:
+        REDIS_HOST: localhost
+        REDIS_PORT: 6379

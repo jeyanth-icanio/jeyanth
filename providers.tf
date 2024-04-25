@@ -27,7 +27,7 @@ terraform {
 	# 		name = "AzureAKSLabs"
 	# 	}
 	# }
-}
+
 
 provider "azurerm" {
   features {}
